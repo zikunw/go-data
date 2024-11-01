@@ -1,7 +1,33 @@
 # go-data
 
 This Go package provides generic data types and fast serialization/deserialization method, without any code generation
-or reflect library overhead. 
+or reflect library overhead.
+
+## Usage
+
+``` go
+package main
+
+import (
+	"fmt"
+
+  dt "github.com/zikunw/go-data"
+)
+
+func main() {
+	t := dt.Tuple3[int, float32, string]{V1: 42, V2: 42, V3: "Hello world."}
+	fmt.Println(t)
+
+	enc := dt.CreateEncoderFunc(&t)
+	buf := make([]byte, 100)
+	enc(&t, buf)
+
+	newTuple := dt.Tuple3[int, float32, string]{}
+	dec := dt.CreateDecoderFunc(&newTuple)
+	dec(&newTuple, buf)
+	fmt.Printf("newTuple: %v\n", newTuple) // Out: {42 42 "Hello world."}
+}
+```
 
 ## Motivation
 
