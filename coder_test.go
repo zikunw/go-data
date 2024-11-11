@@ -15,6 +15,21 @@ func BenchmarkEncodeT1Int(b *testing.B) {
 	}
 }
 
+func BenchmarkDecodeT1Int(b *testing.B) {
+	t := Tuple1[int]{V1: 42}
+	enc := CreateEncoderFunc(&t)
+	buf := make([]byte, 100)
+	enc(&t, buf)
+
+	nt := Tuple1[int]{}
+	dec := CreateDecoderFunc(&nt)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		dec(&nt, buf)
+	}
+}
+
 func BenchmarkEncodeT2Int(b *testing.B) {
 	t := Tuple2[int, int]{V1: 42, V2: 42}
 	enc := CreateEncoderFunc(&t)
@@ -23,6 +38,21 @@ func BenchmarkEncodeT2Int(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		enc(&t, buf)
+	}
+}
+
+func BenchmarkDecodeT2Int(b *testing.B) {
+	t := Tuple2[int, int]{V1: 42, V2: 42}
+	enc := CreateEncoderFunc(&t)
+	buf := make([]byte, 100)
+	enc(&t, buf)
+
+	nt := Tuple2[int, int]{}
+	dec := CreateDecoderFunc(&nt)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		dec(&nt, buf)
 	}
 }
 
@@ -37,6 +67,21 @@ func BenchmarkEncodeT3Int(b *testing.B) {
 	}
 }
 
+func BenchmarkDecodeT3Int(b *testing.B) {
+	t := Tuple3[int, int, int]{V1: 42, V2: 42, V3: 42}
+	enc := CreateEncoderFunc(&t)
+	buf := make([]byte, 100)
+	enc(&t, buf)
+
+	nt := Tuple3[int, int, int]{}
+	dec := CreateDecoderFunc(&nt)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		dec(&nt, buf)
+	}
+}
+
 func BenchmarkEncodeT1String(b *testing.B) {
 	t := Tuple1[string]{V1: "hello"}
 	enc := CreateEncoderFunc(&t)
@@ -45,6 +90,21 @@ func BenchmarkEncodeT1String(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		enc(&t, buf)
+	}
+}
+
+func BenchmarkDecodeT1String(b *testing.B) {
+	t := Tuple1[string]{V1: "hello"}
+	enc := CreateEncoderFunc(&t)
+	buf := make([]byte, 100)
+	enc(&t, buf)
+
+	nt := Tuple1[string]{}
+	dec := CreateDecoderFunc(&nt)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		dec(&nt, buf)
 	}
 }
 
@@ -59,6 +119,21 @@ func BenchmarkEncodeT2String(b *testing.B) {
 	}
 }
 
+func BenchmarkDecodeT2String(b *testing.B) {
+	t := Tuple2[string, string]{V1: "hello", V2: "hello"}
+	enc := CreateEncoderFunc(&t)
+	buf := make([]byte, 100)
+	enc(&t, buf)
+
+	nt := Tuple2[string, string]{}
+	dec := CreateDecoderFunc(&nt)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		dec(&nt, buf)
+	}
+}
+
 func BenchmarkEncodeT3String(b *testing.B) {
 	t := Tuple3[string, string, string]{V1: "hello", V2: "hello", V3: "hello"}
 	enc := CreateEncoderFunc(&t)
@@ -67,5 +142,20 @@ func BenchmarkEncodeT3String(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		enc(&t, buf)
+	}
+}
+
+func BenchmarkDecodeT3String(b *testing.B) {
+	t := Tuple3[string, string, string]{V1: "hello", V2: "hello", V3: "hello"}
+	enc := CreateEncoderFunc(&t)
+	buf := make([]byte, 100)
+	enc(&t, buf)
+
+	nt := Tuple3[string, string, string]{}
+	dec := CreateDecoderFunc(&nt)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		dec(&nt, buf)
 	}
 }
