@@ -12,6 +12,8 @@ var (
 type Tuple interface {
 	SetField(int, any) error
 	GetField(int) any
+
+	New() Tuple
 }
 
 // Tuple1
@@ -36,6 +38,10 @@ func (t *Tuple1[V1]) GetField(field int) any {
 		panic("wrong field")
 	}
 	return t.V1
+}
+
+func (t *Tuple1[V1]) New() Tuple {
+	return &Tuple1[V1]{}
 }
 
 // Tuple2
@@ -74,6 +80,10 @@ func (t *Tuple2[V1, V2]) GetField(field int) any {
 	default:
 		panic("wrong field")
 	}
+}
+
+func (t *Tuple2[V1, V2]) New() Tuple {
+	return &Tuple2[V1, V2]{}
 }
 
 // Tuple3
@@ -122,6 +132,10 @@ func (t *Tuple3[V1, V2, V3]) GetField(field int) any {
 	default:
 		panic("wrong field")
 	}
+}
+
+func (t *Tuple3[V1, V2, V3]) New() Tuple {
+	return &Tuple3[V1, V2, V3]{}
 }
 
 // Tuple4
@@ -180,6 +194,10 @@ func (t *Tuple4[V1, V2, V3, V4]) GetField(field int) any {
 	default:
 		panic("wrong field")
 	}
+}
+
+func (t *Tuple4[V1, V2, V3, V4]) New() Tuple {
+	return &Tuple4[V1, V2, V3, V4]{}
 }
 
 // Tuple5
@@ -248,6 +266,10 @@ func (t *Tuple5[V1, V2, V3, V4, V5]) GetField(field int) any {
 	default:
 		panic("wrong field")
 	}
+}
+
+func (t *Tuple5[V1, V2, V3, V4, V5]) New() Tuple {
+	return &Tuple5[V1, V2, V3, V4, V5]{}
 }
 
 // Tuple6
@@ -326,6 +348,10 @@ func (t *Tuple6[V1, V2, V3, V4, V5, V6]) GetField(field int) any {
 	default:
 		panic("wrong field")
 	}
+}
+
+func (t *Tuple6[V1, V2, V3, V4, V5, V6]) New() Tuple {
+	return &Tuple6[V1, V2, V3, V4, V5, V6]{}
 }
 
 // Tuple7
@@ -414,6 +440,10 @@ func (t *Tuple7[V1, V2, V3, V4, V5, V6, V7]) GetField(field int) any {
 	default:
 		panic("wrong field")
 	}
+}
+
+func (t *Tuple7[V1, V2, V3, V4, V5, V6, V7]) New() Tuple {
+	return &Tuple7[V1, V2, V3, V4, V5, V6, V7]{}
 }
 
 // Tuple8
@@ -512,6 +542,10 @@ func (t *Tuple8[V1, V2, V3, V4, V5, V6, V7, V8]) GetField(field int) any {
 	default:
 		panic("wrong field")
 	}
+}
+
+func (t *Tuple8[V1, V2, V3, V4, V5, V6, V7, V8]) New() Tuple {
+	return &Tuple8[V1, V2, V3, V4, V5, V6, V7, V8]{}
 }
 
 // Tuple9
@@ -620,4 +654,8 @@ func (t *Tuple9[V1, V2, V3, V4, V5, V6, V7, V8, V9]) GetField(field int) any {
 	default:
 		panic("wrong field")
 	}
+}
+
+func (t *Tuple9[V1, V2, V3, V4, V5, V6, V7, V8, V9]) New() Tuple {
+	return &Tuple9[V1, V2, V3, V4, V5, V6, V7, V8, V9]{}
 }

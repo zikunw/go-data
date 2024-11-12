@@ -13,11 +13,15 @@ type Batch[T Tuple] struct {
 func NewBatchOf[T Tuple](t T, size uint) Batch[T] {
 	encode := CreateEncoderFunc(t)
 	decode := CreateDecoderFunc(t)
+	data := make([]T, size)
+	for i := range size {
+		data[i] = data[i].New().(T)
+	}
 
 	return Batch[T]{
 		encode: encode,
 		decode: decode,
-		Data:   make([]T, size),
+		Data:   data,
 	}
 }
 
