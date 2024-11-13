@@ -5,28 +5,35 @@ or reflect library overhead.
 
 ## Usage
 
+Encoding/decoding tuple.
 ``` go
-package main
+t := dt.Tuple3[int, float32, string]{V1: 42, V2: 42, V3: "Hello world."}
+fmt.Println(t)
 
-import (
-  "fmt"
+enc := dt.CreateEncoderFunc(&t)
+buf := make([]byte, 100)
+enc(&t, buf)
 
-  dt "github.com/zikunw/go-data"
-)
+newTuple := dt.Tuple3[int, float32, string]{}
+dec := dt.CreateDecoderFunc(&newTuple)
+dec(&newTuple, buf)
+fmt.Printf("newTuple: %v\n", newTuple) // Out: {42 42 "Hello world."}
+```
 
-func main() {
-	t := dt.Tuple3[int, float32, string]{V1: 42, V2: 42, V3: "Hello world."}
-	fmt.Println(t)
+Encoding/decoding batch.
+``` go
+batch := NewBatchOf(&Tuple3[int, int, string]{}, 5)
+batch.Data[0] = &Tuple3[int, int, string]{0, 42, "Hello world"}
+batch.Data[1] = &Tuple3[int, int, string]{1, 42, "Hello world"}
+batch.Data[2] = &Tuple3[int, int, string]{2, 42, "Hello world"}
+batch.Data[3] = &Tuple3[int, int, string]{3, 42, "Hello world"}
+batch.Data[4] = &Tuple3[int, int, string]{4, 42, "Hello world"}
 
-	enc := dt.CreateEncoderFunc(&t)
-	buf := make([]byte, 100)
-	enc(&t, buf)
+buf := make([]byte, 500)
+n1 := batch.Encode(buf)
 
-	newTuple := dt.Tuple3[int, float32, string]{}
-	dec := dt.CreateDecoderFunc(&newTuple)
-	dec(&newTuple, buf)
-	fmt.Printf("newTuple: %v\n", newTuple) // Out: {42 42 "Hello world."}
-}
+target_batch := NewBatchOf(&Tuple3[int, int, string]{}, 5)
+n2, err := target_batch.Decode(buf)
 ```
 
 ## Motivation
