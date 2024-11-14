@@ -21,6 +21,10 @@ type Tuple1[V1 any] struct {
 	V1 V1
 }
 
+func T1[V1 any](v1 V1) Tuple1[V1] {
+	return Tuple1[V1]{V1: v1}
+}
+
 func (t *Tuple1[V1]) SetField(field int, val any) error {
 	if field != 0 {
 		return ErrExtraField
@@ -48,6 +52,10 @@ func (t *Tuple1[V1]) New() Tuple {
 type Tuple2[V1, V2 any] struct {
 	V1 V1
 	V2 V2
+}
+
+func T2[V1, V2 any](v1 V1, v2 V2) Tuple2[V1, V2] {
+	return Tuple2[V1, V2]{V1: v1, V2: v2}
 }
 
 func (t *Tuple2[V1, V2]) SetField(field int, val any) error {
@@ -91,6 +99,10 @@ type Tuple3[V1, V2, V3 any] struct {
 	V1 V1
 	V2 V2
 	V3 V3
+}
+
+func T3[V1, V2, V3 any](v1 V1, v2 V2, v3 V3) Tuple3[V1, V2, V3] {
+	return Tuple3[V1, V2, V3]{V1: v1, V2: v2, V3: v3}
 }
 
 func (t *Tuple3[V1, V2, V3]) SetField(field int, val any) error {
@@ -144,6 +156,10 @@ type Tuple4[V1, V2, V3, V4 any] struct {
 	V2 V2
 	V3 V3
 	V4 V4
+}
+
+func T4[V1, V2, V3, V4 any](v1 V1, v2 V2, v3 V3, v4 V4) Tuple4[V1, V2, V3, V4] {
+	return Tuple4[V1, V2, V3, V4]{V1: v1, V2: v2, V3: v3, V4: v4}
 }
 
 func (t *Tuple4[V1, V2, V3, V4]) SetField(field int, val any) error {
@@ -207,6 +223,10 @@ type Tuple5[V1, V2, V3, V4, V5 any] struct {
 	V3 V3
 	V4 V4
 	V5 V5
+}
+
+func T5[V1, V2, V3, V4, V5 any](v1 V1, v2 V2, v3 V3, v4 V4, v5 V5) Tuple5[V1, V2, V3, V4, V5] {
+	return Tuple5[V1, V2, V3, V4, V5]{V1: v1, V2: v2, V3: v3, V4: v4, V5: v5}
 }
 
 func (t *Tuple5[V1, V2, V3, V4, V5]) SetField(field int, val any) error {
@@ -280,6 +300,10 @@ type Tuple6[V1, V2, V3, V4, V5, V6 any] struct {
 	V4 V4
 	V5 V5
 	V6 V6
+}
+
+func T6[V1, V2, V3, V4, V5, V6 any](v1 V1, v2 V2, v3 V3, v4 V4, v5 V5, v6 V6) Tuple6[V1, V2, V3, V4, V5, V6] {
+	return Tuple6[V1, V2, V3, V4, V5, V6]{V1: v1, V2: v2, V3: v3, V4: v4, V5: v5, V6: v6}
 }
 
 func (t *Tuple6[V1, V2, V3, V4, V5, V6]) SetField(field int, val any) error {
@@ -363,6 +387,10 @@ type Tuple7[V1, V2, V3, V4, V5, V6, V7 any] struct {
 	V5 V5
 	V6 V6
 	V7 V7
+}
+
+func T7[V1, V2, V3, V4, V5, V6, V7 any](v1 V1, v2 V2, v3 V3, v4 V4, v5 V5, v6 V6, v7 V7) Tuple7[V1, V2, V3, V4, V5, V6, V7] {
+	return Tuple7[V1, V2, V3, V4, V5, V6, V7]{V1: v1, V2: v2, V3: v3, V4: v4, V5: v5, V6: v6, V7: v7}
 }
 
 func (t *Tuple7[V1, V2, V3, V4, V5, V6, V7]) SetField(field int, val any) error {
@@ -456,6 +484,10 @@ type Tuple8[V1, V2, V3, V4, V5, V6, V7, V8 any] struct {
 	V6 V6
 	V7 V7
 	V8 V8
+}
+
+func T8[V1, V2, V3, V4, V5, V6, V7, V8 any](v1 V1, v2 V2, v3 V3, v4 V4, v5 V5, v6 V6, v7 V7, v8 V8) Tuple8[V1, V2, V3, V4, V5, V6, V7, V8] {
+	return Tuple8[V1, V2, V3, V4, V5, V6, V7, V8]{V1: v1, V2: v2, V3: v3, V4: v4, V5: v5, V6: v6, V7: v7, V8: v8}
 }
 
 func (t *Tuple8[V1, V2, V3, V4, V5, V6, V7, V8]) SetField(field int, val any) error {
@@ -559,6 +591,10 @@ type Tuple9[V1, V2, V3, V4, V5, V6, V7, V8, V9 any] struct {
 	V7 V7
 	V8 V8
 	V9 V9
+}
+
+func T9[V1, V2, V3, V4, V5, V6, V7, V8, V9 any](v1 V1, v2 V2, v3 V3, v4 V4, v5 V5, v6 V6, v7 V7, v8 V8, v9 V9) Tuple9[V1, V2, V3, V4, V5, V6, V7, V8, V9] {
+	return Tuple9[V1, V2, V3, V4, V5, V6, V7, V8, V9]{V1: v1, V2: v2, V3: v3, V4: v4, V5: v5, V6: v6, V7: v7, V8: v8, V9: v9}
 }
 
 func (t *Tuple9[V1, V2, V3, V4, V5, V6, V7, V8, V9]) SetField(field int, val any) error {

@@ -12,7 +12,7 @@ or reflect library overhead.
 
 Encoding/decoding tuple.
 ``` go
-t := dt.Tuple3[int, float32, string]{V1: 42, V2: 42, V3: "Hello world."}
+t := dt.T3(42, float32(42), "Hello world")
 fmt.Println(t)
 
 enc := dt.CreateEncoderFunc(&t)
@@ -28,11 +28,11 @@ fmt.Printf("newTuple: %v\n", newTuple) // Out: {42 42 "Hello world."}
 Encoding/decoding batch.
 ``` go
 batch := NewBatchOf(&Tuple3[int, int, string]{}, 5)
-batch.Data[0] = &Tuple3[int, int, string]{0, 42, "Hello world"}
-batch.Data[1] = &Tuple3[int, int, string]{1, 42, "Hello world"}
-batch.Data[2] = &Tuple3[int, int, string]{2, 42, "Hello world"}
-batch.Data[3] = &Tuple3[int, int, string]{3, 42, "Hello world"}
-batch.Data[4] = &Tuple3[int, int, string]{4, 42, "Hello world"}
+batch.Data[0] = &T3(0, 42, "Hello world")
+batch.Data[1] = &T3(1, 42, "Hello world")
+batch.Data[2] = &T3(2, 42, "Hello world")
+batch.Data[3] = &T3(3, 42, "Hello world")
+batch.Data[4] = &T3(4, 42, "Hello world")
 
 buf := make([]byte, 500)
 n1 := batch.Encode(buf)
