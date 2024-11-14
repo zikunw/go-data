@@ -3,7 +3,12 @@
 This Go package provides generic data types and fast serialization/deserialization method, without any code generation
 or reflect library overhead.
 
-## Usage
+## Features
+1. Provides generic tuple types.
+2. Provides batch data structure for the tuple types.
+3. Provides fast runtime serialization/deserialization for both tuples and batches.
+
+## Example Usage
 
 Encoding/decoding tuple.
 ``` go
